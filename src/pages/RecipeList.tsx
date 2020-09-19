@@ -39,7 +39,10 @@ const RecipeList: React.FC = () => {
                   <IonLabel>{image.text}</IonLabel>
                 </IonItem>
                 <IonItemOptions side="end">
-                  <IonItemOption color="danger" expandable onClick={() => {}}><IonIcon name="trash-sharp"></IonIcon></IonItemOption>
+                  <IonItemOption color="danger" onClick={() => {}}><IonIcon name="trash-sharp"></IonIcon></IonItemOption>
+                </IonItemOptions>
+                <IonItemOptions side="start">
+                  <IonItemOption color="primary" onClick={() => {}}><IonIcon name="cart-sharp"></IonIcon></IonItemOption>
                 </IonItemOptions>
               </IonItemSliding>
             ))}
