@@ -1,7 +1,7 @@
 import { IonButton, IonCard, IonCardContent, IonIcon } from '@ionic/react';
 import React, { useState } from 'react';
 import { heart, close } from 'ionicons/icons';
-import './ExploreContainer.css';
+import './TinderContainer.css';
 
 import TinderCard from './TinderCard';
 
@@ -10,7 +10,7 @@ interface TinderCardState {
   status: string;
 }
 
-const ExploreContainer: React.FC = () => {
+const TinderContainer: React.FC = () => {
 
   const [cards, setCards] = useState<TinderCardState[]>([
     {id: 1, status: 'none'},
@@ -97,4 +97,4 @@ const ExploreContainer: React.FC = () => {
   );
 };
 
-export default ExploreContainer;
+export default TinderContainer;

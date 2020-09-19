@@ -1,7 +1,6 @@
 import { IonIcon, IonImg, IonThumbnail, IonItemOptions, IonItemOption, IonButtons, IonLabel, IonItemSliding, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem  } from '@ionic/react';
 import React from 'react';
-import { useParams } from 'react-router';
-import './recipeList.css';
+import './RecipeList.css';
 
 type Item = {
   src: string;
@@ -9,9 +8,9 @@ type Item = {
 };
 const items: Item[] = [{ src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{ src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{ src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'}];
 
-const Page: React.FC = () => {
+const RecipeList: React.FC = () => {
 
-  const { name } = useParams<{ name: string; }>();
+  const name = 'Lieblingsrezepte';
 
   return (
     <IonPage>
@@ -50,4 +49,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default RecipeList;

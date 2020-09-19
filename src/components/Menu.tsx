@@ -25,13 +25,19 @@ interface AppPage {
 const appPages: AppPage[] = [
   {
     title: 'Home',
-    url: '/page/Page',
+    url: '/page/home',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp
   },
   {
-    title: 'My favorite Recipes',
+    title: 'Lieblingsrezepte',
     url: '/page/recipeList',
+    iosIcon: paperPlaneOutline,
+    mdIcon: paperPlaneSharp
+  },
+  {
+    title: 'Einstellungen',
+    url: '/page/settings',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp
   }
