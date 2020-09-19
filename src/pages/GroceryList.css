@@ -1,0 +1,9 @@
+.textRight{
+    text-align: right;
+}
+.rowclass{
+    border-bottom: 1px solid lightgray;
+}
+.rowclass:last-child{
+    border-bottom: none;
+}

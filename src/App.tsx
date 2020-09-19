@@ -25,6 +25,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Settings from './pages/Settings';
+import GroceryList from './pages/GroceryList';
 
 const App: React.FC = () => {
 
@@ -36,6 +37,7 @@ const App: React.FC = () => {
           <IonRouterOutlet id="main">
             <Route path="/page/home" component={TinderPage} exact />
             <Route path="/page/recipeList" component={RecipeList} exact />
+            <Route path="/page/GroceryList" component={GroceryList} exact />
             <Route path="/page/settings" component={Settings} exact />
             <Redirect from="/" to="/page/home" exact />
           </IonRouterOutlet>
