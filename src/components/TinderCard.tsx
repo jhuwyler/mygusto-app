@@ -3,9 +3,21 @@ import './TinderCard.css';
 
 import { Gesture, GestureConfig, createGesture, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react';
 
-const TinderCard: React.FC = () => {
+interface TinderCardState {
+  id: number;
+  status: string;
+}
+
+interface TinderCardProps {
+  cardState: TinderCardState;
+  onSwipeLeft: (state: TinderCardState) => void;
+  onSwipeRight: (state: TinderCardState) => void;
+}
+
+const TinderCard: React.FC<TinderCardProps> = ({cardState, onSwipeLeft, onSwipeRight}) => {
 
   const elementRef = createRef<HTMLIonCardElement>();
+  const windowWidth = window.innerWidth;
 
   const [swipeGesture, setSwipeGesture] = useState<Gesture|null>(null);
   const [transitionStyle, setTransitionStyle] = useState('');
@@ -13,8 +25,6 @@ const TinderCard: React.FC = () => {
 
   useEffect(() => {
     if (elementRef.current !== null && swipeGesture === null) {
-      const windowWidth = window.innerWidth;
-
       const options: GestureConfig = {
         el: elementRef.current,
         gestureName: 'swipe',
@@ -30,9 +40,11 @@ const TinderCard: React.FC = () => {
           setTransitionStyle('0.3s ease-out');
 
           if (ev.deltaX > windowWidth/2){
-            setTransformStyle(`translateX(${windowWidth * 1.5}px)`);
+            onSwipeRight(cardState);
+            // setTransformStyle(`translateX(${windowWidth * 1.5}px) rotate(-20deg)`);
           } else if (ev.deltaX < -windowWidth/2){
-            setTransformStyle(`translateX(-${windowWidth * 1.5}px)`);
+            onSwipeLeft(cardState);
+            // setTransformStyle(`translateX(-${windowWidth * 1.5}px) rotate(20deg));
           } else {
             setTransformStyle('');
           }
@@ -43,7 +55,22 @@ const TinderCard: React.FC = () => {
       setSwipeGesture(newGesture);
       newGesture.enable();
     }
-  }, [elementRef, swipeGesture]);
+  }, [elementRef, swipeGesture, windowWidth, cardState, onSwipeRight, onSwipeLeft]);
+
+  useEffect(() => {
+    if (cardState.status === 'like' && elementRef.current !== null) {
+      // elementRef.current.style.transition = '0.3s ease-out';
+      // elementRef.current.style.transform = `translateX(-${windowWidth * 1.5}px) rotate(-20deg)`;
+      setTransitionStyle('0.3s ease-out');
+      setTransformStyle(`translateX(-${windowWidth * 1.5}px) rotate(-20deg)`);
+    }
+    if (cardState.status === 'hate' && elementRef.current !== null) {
+      // elementRef.current.style.transition = '0.3s ease-out';
+      // elementRef.current.style.transform = `translateX(${windowWidth * 1.5}px) rotate(20deg)`;
+      setTransitionStyle('0.3s ease-out');
+      setTransformStyle(`translateX(${windowWidth * 1.5}px) rotate(20deg)`);
+    }
+  }, [cardState.status, elementRef, windowWidth]);
 
   return (
     <IonCard ref={elementRef} style={{transition: transitionStyle, transform: transformStyle}} className="tinder-card" onTouchStart={() => console.log('down')} onTouchEnd={() => console.log('up')}>
