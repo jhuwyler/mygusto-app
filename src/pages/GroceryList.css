@@ -7,3 +7,6 @@
 .rowclass:last-child{
     border-bottom: none;
 }
+.floatRight{
+    float: right;
+}

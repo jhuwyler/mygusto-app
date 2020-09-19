@@ -35,7 +35,7 @@ function flushList(){
         <IonHeader collapse="condense">
           <IonToolbar>
              <IonTitle size="large" >{pageName} </IonTitle>
-            <IonButton shape="round" color="danger" onClick={flushList}>leeren</IonButton>
+            <IonButton class='floatRight' size='small' shape="round" color="danger" onClick={flushList}>leeren</IonButton>
           </IonToolbar>
         </IonHeader>
       {list.length > 0 &&
