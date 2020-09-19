@@ -1,4 +1,4 @@
-import { IonButton, IonIcon } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonIcon } from '@ionic/react';
 import React, { useState } from 'react';
 import { heart, close } from 'ionicons/icons';
 import './ExploreContainer.css';
@@ -49,7 +49,7 @@ const ExploreContainer: React.FC = () => {
     if (currentIndex >= 0) {
       setCards(cards.map((card, cardIndex) => {
         if (cardIndex === currentIndex) {
-          card.status = 'like';
+          card.status = 'hate';
         }
         return card;
       }));
@@ -61,7 +61,7 @@ const ExploreContainer: React.FC = () => {
     if (currentIndex >= 0) {
       setCards(cards.map((card, cardIndex) => {
         if (cardIndex === currentIndex) {
-          card.status = 'hate';
+          card.status = 'like';
         }
         return card;
       }));
@@ -79,13 +79,20 @@ const ExploreContainer: React.FC = () => {
       </div>
       {cardsLeft > 0 &&
       <div className="tinder-buttons">
-        <IonButton shape="round" size="large" color="success" onClick={likeCurrentCard}>
-          <IonIcon slot="icon-only" icon={heart} />
-        </IonButton>
         <IonButton shape="round" size="large" color="danger" onClick={hateCurrentCard}>
           <IonIcon slot="icon-only" icon={close} />
         </IonButton>
+        <IonButton shape="round" size="large" color="success" onClick={likeCurrentCard}>
+          <IonIcon slot="icon-only" icon={heart} />
+        </IonButton>
       </div>}
+      {cardsLeft === 0 &&
+        <IonCard>
+          <IonCardContent>
+                You are done. Good Job.
+          </IonCardContent>
+        </IonCard>
+      }
     </div>
   );
 };
