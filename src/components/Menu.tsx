@@ -12,7 +12,7 @@ import {
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { paperPlaneOutline, paperPlaneSharp} from 'ionicons/icons';
+import { homeOutline, homeSharp, heartOutline, headsetSharp, optionsOutline, optionsSharp} from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -26,20 +26,20 @@ const appPages: AppPage[] = [
   {
     title: 'Home',
     url: '/page/home',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    iosIcon: homeOutline,
+    mdIcon: homeSharp
   },
   {
     title: 'Lieblingsrezepte',
     url: '/page/recipeList',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    iosIcon: heartOutline,
+    mdIcon: headsetSharp
   },
   {
     title: 'Einstellungen',
     url: '/page/settings',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    iosIcon: optionsOutline,
+    mdIcon: optionsSharp
   }
 ];
 
