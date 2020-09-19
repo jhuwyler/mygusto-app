@@ -1,5 +1,4 @@
 import {
-  IonCard,
   IonContent,
   IonIcon,
   IonItem,
@@ -59,7 +58,7 @@ const Menu: React.FC = () => {
       <IonContent>
         <IonList id="inbox-list">
 
-          <IonListHeader><IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yGusto</span></IonTitle></IonListHeader>
+          <IonListHeader style={{paddingTop: 40, paddingBottom: 20}}><IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yGusto</span></IonTitle></IonListHeader>
 
 
 
