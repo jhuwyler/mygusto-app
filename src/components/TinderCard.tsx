@@ -3,9 +3,17 @@ import './TinderCard.css';
 
 import { Gesture, GestureConfig, createGesture, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/react';
 
+interface Ingredient {
+  text: string;
+}
+
 interface TinderCardState {
   id: number;
   status: string;
+  title: string;
+  teasertext: string;
+  image169: string;
+  ingredients: Ingredient[];
 }
 
 interface TinderCardProps {
@@ -84,28 +92,19 @@ const TinderCard: React.FC<TinderCardProps> = ({cardState, onSwipeLeft, onSwipeR
 
   return (
     <IonCard className="tinder-card" ref={elementRef} style={{transition: transitionStyle, transform: transformStyle}} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-      <img className="tinder-card-image" src="assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg" alt=""/>
-      <div style={{maxHeight: 325, overflow: 'scroll'}}>
+      <img className="tinder-card-image" src={cardState.image169} alt=""/>
+      <div style={{height: showDetails ? 340 : 250, overflow: 'scroll'}}>
         <IonCardHeader>
-          <IonCardTitle>Rote-Bohnen-Suppe mit Sauerrahm</IonCardTitle>
+          <IonCardTitle>{cardState.title}</IonCardTitle>
         </IonCardHeader>
         <IonCardContent>
-          Schmeckt fein und gibt Kraft: Rote-Bohnen-Suppe aus Kidneybohnen mit Knoblauch, Tomatenpüree und Sauerrahm, abgeschmeckt mit Zitronensaft und Kümmel.
+          {cardState.teasertext}
           {showDetails && (
             <div>
               <hr/>
               <h1>Zutaten</h1>
               <ul>
-                <li>Kidney-Bohnen aus der Dose</li>
-                <li>Knoblauchzehen</li>
-                <li>Olivenöl</li>
-                <li>Gemüsebouillon</li>
-                <li>Saurer Halbrahm</li>
-                <li>Salz</li>
-                <li>Cayennepfeffer</li>
-                <li>Zitronensaft</li>
-                <li>Kümmel, nach Belieben</li>
-                <li>Basilikum</li>
+                {cardState.ingredients.map((ingredient, index) => <li key={index}>{ingredient.text}</li>)}
               </ul>
             </div>
           )}
