@@ -117,12 +117,12 @@ const TinderContainer: React.FC = () => {
   }
 
   const cardsLeft = cards.filter(v => v.status === 'none').length;
-
+  console.log(cards);
   return (
     <div>
       <div className="tinder-container">
-        {cards.reverse().map((card, cardIndex) => (
-          <TinderCard cardState={card} key={card.id} onSwipeLeft={onSwipeLeft} onSwipeRight={onSwipeRight}/>
+        {cards.map((card, cardIndex) => (
+          <TinderCard zIndex={100-cardIndex} cardState={card} key={card.id} onSwipeLeft={onSwipeLeft} onSwipeRight={onSwipeRight}/>
         ))}
       </div>
       {cardsLeft > 0 &&
