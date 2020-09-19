@@ -1,6 +1,6 @@
-import { IonIcon, IonImg, IonThumbnail, IonItemOptions, IonItemOption, IonButtons, IonLabel, IonItemSliding, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem  } from '@ionic/react';
+import { IonIcon, IonImg, IonThumbnail, IonItemOptions, IonItemOption, IonButtons, IonLabel, IonItemSliding, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonCardContent, IonToast  } from '@ionic/react';
 import { cart, trash } from 'ionicons/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import './RecipeList.css';
 
 type Item = {
@@ -13,15 +13,17 @@ const items: Item[] = [{ id: 1, src: 'http://placekitten.com/g/200/300', text: '
 const RecipeList: React.FC = () => {
   const [list, setList] = React.useState(items);
   const name = 'Lieblingsrezepte';
-  
+  const [showToastRemoved, setShowToastRemoved] = useState(false);
+  const [showToastAdded, setShowToastAdded] = useState(false);
   function removeItem(id : number){
     const newList = list.filter((item) => item.id !== id);
-  
+    setShowToastRemoved(true);
     setList(newList);
   }
 
   function addToCart(id : number){
     //TODO
+    setShowToastAdded(true);
   }
   return (
     <IonPage>
@@ -40,6 +42,7 @@ const RecipeList: React.FC = () => {
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
+      {list.length > 0 &&
         <IonList>
             {list.map((item) => (
               <IonItemSliding key={item.id}>
@@ -57,7 +60,26 @@ const RecipeList: React.FC = () => {
                 </IonItemOptions>
               </IonItemSliding>
             ))}
-         </IonList>
+         </IonList>}
+      {list.length === 0 &&
+        <IonCard>
+          <IonCardContent>
+                Keine Lieblingsrezepte. Leg gleich los mit swipen!
+          </IonCardContent>
+        </IonCard>
+      }
+      <IonToast
+        isOpen={showToastRemoved}
+        onDidDismiss={() => setShowToastRemoved(false)}
+        message="Rezept entfernt"
+        duration={400}
+      />
+      <IonToast
+        isOpen={showToastAdded}
+        onDidDismiss={() => setShowToastAdded(false)}
+        message="Rezept der Einkaufsliste hinzugefügt"
+        duration={400}
+      />
       </IonContent>
     </IonPage>
   );
