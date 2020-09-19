@@ -13,10 +13,13 @@ import {
     IonRow,
     IonCol,
     IonButton,
-    IonList, IonItem, IonCheckbox, IonLabel
+    IonList,
+    IonCheckbox, IonLabel, IonItem
 } from '@ionic/react';
-import React, { useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import './GroceryList.css';
+import axios from 'axios';
+import { baseURL } from '../config';
 
 type Item = {
   id: number;
@@ -24,19 +27,27 @@ type Item = {
   // on_action: string;
   quantity: string;
 };
-const items: Item[] = [{ id: 1, name:"Milch", quantity: '5l' },{ id: 2, name:"Eier", quantity: '2' },{ id: 3, name:"Banane", quantity: '10kg' }];
 
 const GroceryList: React.FC = () => {
-  const [list, setList] = React.useState(items);
-  const pageName = <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yShoppingList</span></IonTitle>;
-
+  const [list, setList] = React.useState<Item[]>([]);
   const [showToastRemoved, setShowToastRemoved] = useState(false);
 
-function flushList(){
+async function flushList(){
     const newList : Item[]= [];
     setShowToastRemoved(true);
     setList(newList);
+    await axios.delete(baseURL + '/recipe/shopping_list');
 }
+async function fetchList() {
+    const result = await axios.get(baseURL + '/ingredient');
+    setList(items => result.data.map((item:any) => ({
+        name: item.name,
+      quantity: item.quantity
+    })));
+  };
+  useEffect(() => {
+    fetchList();
+  }, []);
   return (
     <IonPage>
       <IonHeader>
@@ -44,7 +55,7 @@ function flushList(){
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{pageName}</IonTitle>
+          <IonTitle><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yShoppingList</span></IonTitle>
         </IonToolbar>
 
       </IonHeader>
@@ -52,8 +63,8 @@ function flushList(){
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-             <IonTitle size="large" >{pageName} </IonTitle>
-            <IonButton class='floatRight' size='small' shape="round" color="orange" onClick={flushList}>leeren</IonButton>
+          <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yShoppingList</span></IonTitle>
+            <IonButton class='floatRight' size='small' shape="round" color="danger" onClick={flushList}>leeren</IonButton>
           </IonToolbar>
         </IonHeader>
         <IonList>
