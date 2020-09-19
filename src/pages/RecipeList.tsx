@@ -33,8 +33,10 @@ const RecipeList: React.FC = () => {
     setList(newList);
   }
 
-  function addToCart(id : number){
-    //TODO
+  async function addToCart(id : number){
+    await axios.post(baseURL + '/recipe/shopping_list', {
+      'recipe_id': id
+    });
     setShowToastAdded(true);
   }
   return (

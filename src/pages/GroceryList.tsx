@@ -1,23 +1,27 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonToast, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import './GroceryList.css';
+import axios from 'axios';
+import { baseURL } from '../config';
 
 type Item = {
   id: number;
   name: string;
   quantity: string;
 };
-const items: Item[] = [{ id: 1, name:"Milch", quantity: '5l' },{ id: 2, name:"Eier", quantity: '2' },{ id: 3, name:"Banane", quantity: '10kg' }];
+//const items: Item[] = [{ id: 1, name:"Milch", quantity: '5l' },{ id: 2, name:"Eier", quantity: '2' },{ id: 3, name:"Banane", quantity: '10kg' }];
 
-const GroceryList: React.FC = () => {
-  const [list, setList] = React.useState(items);
+  const GroceryList: React.FC = () => {
+  const [list, setList] = React.useState<Item[]>([]);
   const [showToastRemoved, setShowToastRemoved] = useState(false);
 
-function flushList(){
-    const newList : Item[]= [];
-    setShowToastRemoved(true);
-    setList(newList);
-}
+  async function flushList(){
+      const newList : Item[]= [];
+      setShowToastRemoved(true);
+      setList(newList);
+      await axios.delete(baseURL + '/recipe/shopping_list');
+  }
+  
   return (
     <IonPage>
       <IonHeader>
