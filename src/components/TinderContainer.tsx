@@ -51,6 +51,9 @@ const TinderContainer: React.FC = () => {
   function likeCurrentCard() {
     setCards(cards => {
       const currentIndex = cards.findIndex(card => card.status === 'none');
+      if (currentIndex < 0) {
+        return cards;
+      }
       axios.post(baseURL + '/recipe/liked', {
         recipe_id: cards[currentIndex].id,
         sentiment: 'liked',
@@ -68,6 +71,9 @@ const TinderContainer: React.FC = () => {
   function hateCurrentCard() {
     setCards(cards => {
       const currentIndex = cards.findIndex(card => card.status === 'none');
+      if (currentIndex < 0) {
+        return cards;
+      }
       axios.post(baseURL + '/recipe/liked', {
         recipe_id: cards[currentIndex].id,
         sentiment: 'disliked',
@@ -131,7 +137,7 @@ const TinderContainer: React.FC = () => {
       {cardsLeft === 0 &&
         <IonCard>
           <IonCardContent>
-            Loading some more recipes ;)
+            Mehr Rezepte sind unterwegs ;)
           </IonCardContent>
         </IonCard>
       }
