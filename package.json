@@ -1,5 +1,5 @@
 {
-  "name": "testapp",
+  "name": "menumatcher",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -45,7 +45,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "2.4.1"
+    "@capacitor/cli": "2.4.1",
+    "@ionic/lab": "3.2.7"
   },
   "description": "An Ionic project"
 }
