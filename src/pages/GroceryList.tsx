@@ -9,9 +9,8 @@ type Item = {
   name: string;
   quantity: string;
 };
-//const items: Item[] = [{ id: 1, name:"Milch", quantity: '5l' },{ id: 2, name:"Eier", quantity: '2' },{ id: 3, name:"Banane", quantity: '10kg' }];
 
-  const GroceryList: React.FC = () => {
+const GroceryList: React.FC = () => {
   const [list, setList] = React.useState<Item[]>([]);
   const [showToastRemoved, setShowToastRemoved] = useState(false);
 
@@ -21,7 +20,7 @@ type Item = {
       setList(newList);
       await axios.delete(baseURL + '/recipe/shopping_list');
   }
-  
+
   return (
     <IonPage>
       <IonHeader>
