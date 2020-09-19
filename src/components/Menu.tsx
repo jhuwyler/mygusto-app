@@ -13,7 +13,7 @@ import {
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { homeOutline, homeSharp, heartOutline, headsetSharp, optionsOutline, optionsSharp} from 'ionicons/icons';
+import { homeOutline, homeSharp, heartOutline, heartSharp, optionsOutline, optionsSharp, cartOutline, cartSharp} from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -34,7 +34,13 @@ const appPages: AppPage[] = [
     title: 'MyRecipes',
     url: '/page/recipeList',
     iosIcon: heartOutline,
-    mdIcon: headsetSharp
+    mdIcon: heartSharp
+  },
+  {
+    title: 'Einkaufsliste',
+    url: '/page/GroceryList',
+    iosIcon: cartOutline,
+    mdIcon: cartSharp
   },
   {
 
