@@ -1,6 +1,6 @@
 import { IonButton, IonIcon } from '@ionic/react';
 import React, { useState } from 'react';
-import { heart, close, car } from 'ionicons/icons';
+import { heart, close } from 'ionicons/icons';
 import './ExploreContainer.css';
 
 import TinderCard from './TinderCard';
