@@ -1,17 +1,35 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonToast, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
+import {
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonCard,
+    IonCardContent,
+    IonToast,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonButton,
+    IonList, IonItem, IonCheckbox, IonLabel
+} from '@ionic/react';
 import React, { useState } from 'react';
 import './GroceryList.css';
 
 type Item = {
   id: number;
   name: string;
+  // on_action: string;
   quantity: string;
 };
 const items: Item[] = [{ id: 1, name:"Milch", quantity: '5l' },{ id: 2, name:"Eier", quantity: '2' },{ id: 3, name:"Banane", quantity: '10kg' }];
 
 const GroceryList: React.FC = () => {
   const [list, setList] = React.useState(items);
-  const pageName = 'Einkaufsliste';
+  const pageName = <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yShoppingList</span></IonTitle>;
+
   const [showToastRemoved, setShowToastRemoved] = useState(false);
 
 function flushList(){
@@ -35,9 +53,19 @@ function flushList(){
         <IonHeader collapse="condense">
           <IonToolbar>
              <IonTitle size="large" >{pageName} </IonTitle>
-            <IonButton class='floatRight' size='small' shape="round" color="danger" onClick={flushList}>leeren</IonButton>
+            <IonButton class='floatRight' size='small' shape="round" color="orange" onClick={flushList}>leeren</IonButton>
           </IonToolbar>
         </IonHeader>
+        <IonList>
+          <IonItem>
+            <IonCheckbox checked={true}/>
+            <IonLabel>Aktionen anzeigen</IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonCheckbox checked={true}/>
+            <IonLabel>Cumulus Angebote anzeigen</IonLabel>
+          </IonItem>
+        </IonList>
       {list.length > 0 &&
         <IonGrid>
             {list.map((item) => (
@@ -62,6 +90,7 @@ function flushList(){
       />
       </IonContent>
     </IonPage>
+
   );
 };
 

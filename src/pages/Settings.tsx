@@ -30,8 +30,8 @@ const Settings: React.FC = () => {
             <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt=""/>
           </IonAvatar>
           <IonLabel className="ion-padding-start">
-            <h2>Max Muster</h2>
-            <p>max.muster@gmail.com</p>
+            <h2>Migros-Chind</h2>
+            <p>migros-chind@gmail.com</p>
           </IonLabel>
         </div>
 
