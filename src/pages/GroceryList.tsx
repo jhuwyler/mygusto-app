@@ -1,4 +1,4 @@
-import { IonButtons, IonLabel, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonCardContent, IonToast, IonGrid, IonRow, IonCol  } from '@ionic/react';
+import { IonButtons, IonLabel, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonCardContent, IonToast, IonGrid, IonRow, IonCol, IonButton, IonIcon  } from '@ionic/react';
 import { cart, trash } from 'ionicons/icons';
 import React, { useState } from 'react';
 import './GroceryList.css';
@@ -15,6 +15,11 @@ const GroceryList: React.FC = () => {
   const pageName = 'Einkaufsliste';
   const [showToastRemoved, setShowToastRemoved] = useState(false);
 
+function flushList(){
+    const newList : Item[]= [];
+    setShowToastRemoved(true);
+    setList(newList);
+}
   return (
     <IonPage>
       <IonHeader>
@@ -29,7 +34,8 @@ const GroceryList: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{pageName}</IonTitle>
+             <IonTitle size="large" >{pageName} </IonTitle>
+            <IonButton shape="round" color="danger" onClick={flushList}>leeren</IonButton>
           </IonToolbar>
         </IonHeader>
       {list.length > 0 &&
