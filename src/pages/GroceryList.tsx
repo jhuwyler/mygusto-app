@@ -1,5 +1,5 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonToast, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import './GroceryList.css';
 import axios from 'axios';
 import { baseURL } from '../config';
@@ -22,6 +22,16 @@ async function flushList(){
     setList(newList);
     await axios.delete(baseURL + '/recipe/shopping_list');
 }
+async function fetchList() {
+    const result = await axios.get(baseURL + '/ingredient');
+    setList(items => result.data.map((item:any) => ({
+        name: item.name,
+      quantity: item.quantity
+    })));
+  };
+  useEffect(() => {
+    fetchList();
+  }, []);
   return (
     <IonPage>
       <IonHeader>
