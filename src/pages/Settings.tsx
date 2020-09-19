@@ -4,9 +4,6 @@ import './Settings.css';
 
 
 const Settings: React.FC = () => {
-
-  const name = 'Einstellungen';
-
   return (
     <IonPage>
       <IonHeader>
@@ -14,7 +11,7 @@ const Settings: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>ySettings</span></IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -61,7 +58,7 @@ const Settings: React.FC = () => {
           <IonItemDivider>Nachhaltigkeit</IonItemDivider>
           <IonRange min={1} max={5} step={1} snaps={true} ticks={true} value={3}>
             <IonLabel slot="start">¯\_(ツ)_/¯</IonLabel>
-            <IonLabel slot="end">Sehr</IonLabel>
+            <IonLabel slot="end">Viel</IonLabel>
           </IonRange>
         </IonList>
       </IonContent>

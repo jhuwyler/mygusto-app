@@ -9,11 +9,9 @@ type Item = {
   name: string;
   quantity: string;
 };
-//const items: Item[] = [{ id: 1, name:"Milch", quantity: '5l' },{ id: 2, name:"Eier", quantity: '2' },{ id: 3, name:"Banane", quantity: '10kg' }];
 
 const GroceryList: React.FC = () => {
   const [list, setList] = React.useState<Item[]>([]);
-  const pageName = 'Einkaufsliste';
   const [showToastRemoved, setShowToastRemoved] = useState(false);
 
 async function flushList(){
@@ -39,14 +37,14 @@ async function fetchList() {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{pageName}</IonTitle>
+          <IonTitle><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yShoppingList</span></IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-             <IonTitle size="large" >{pageName} </IonTitle>
+          <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yShoppingList</span></IonTitle>
             <IonButton class='floatRight' size='small' shape="round" color="danger" onClick={flushList}>leeren</IonButton>
           </IonToolbar>
         </IonHeader>

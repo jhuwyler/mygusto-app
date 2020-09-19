@@ -24,7 +24,7 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Swipe',
+    title: 'MyTaste',
     url: '/page/home',
     iosIcon: homeOutline,
     mdIcon: homeSharp
@@ -36,14 +36,14 @@ const appPages: AppPage[] = [
     mdIcon: heartSharp
   },
   {
-    title: 'Einkaufsliste',
+    title: 'MyShoppingList',
     url: '/page/GroceryList',
     iosIcon: cartOutline,
     mdIcon: cartSharp
   },
   {
 
-    title: 'Settings',
+    title: 'MySettings',
     url: '/page/settings',
     iosIcon: optionsOutline,
     mdIcon: optionsSharp

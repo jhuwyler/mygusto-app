@@ -17,12 +17,13 @@ interface TinderCardState {
 }
 
 interface TinderCardProps {
+  zIndex: number;
   cardState: TinderCardState;
   onSwipeLeft: (state: TinderCardState) => void;
   onSwipeRight: (state: TinderCardState) => void;
 }
 
-const TinderCard: React.FC<TinderCardProps> = ({cardState, onSwipeLeft, onSwipeRight}) => {
+const TinderCard: React.FC<TinderCardProps> = ({zIndex, cardState, onSwipeLeft, onSwipeRight}) => {
 
   const elementRef = createRef<HTMLIonCardElement>();
   const windowWidth = window.innerWidth;
@@ -66,7 +67,8 @@ const TinderCard: React.FC<TinderCardProps> = ({cardState, onSwipeLeft, onSwipeR
       setSwipeGesture(newGesture);
       newGesture.enable();
     }
-  }, [elementRef, swipeGesture, windowWidth, cardState, onSwipeRight, onSwipeLeft]);
+  // eslint-disable-next-line
+  }, [elementRef, swipeGesture, windowWidth, cardState]);
 
   useEffect(() => {
     if (cardState.status === 'hate' && elementRef.current !== null) {
@@ -91,7 +93,7 @@ const TinderCard: React.FC<TinderCardProps> = ({cardState, onSwipeLeft, onSwipeR
   }
 
   return (
-    <IonCard className="tinder-card" ref={elementRef} style={{transition: transitionStyle, transform: transformStyle}} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <IonCard className="tinder-card" ref={elementRef} style={{transition: transitionStyle, transform: transformStyle, zIndex: zIndex}} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <img className="tinder-card-image" src={cardState.image169} alt=""/>
       <div style={{height: showDetails ? 340 : 250, overflow: 'scroll'}}>
         <IonCardHeader>

@@ -4,8 +4,6 @@ import ExploreContainer from '../components/TinderContainer';
 import './TinderPage.css';
 
 const TinderPage: React.FC = () => {
-
-  const name = <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yTaste</span></IonTitle>;
   return (
     <IonPage>
       <IonHeader>
@@ -13,14 +11,14 @@ const TinderPage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yTaste</span></IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen scrollY={false}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
+          <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yTaste</span></IonTitle>
           </IonToolbar>
         </IonHeader>
         <ExploreContainer/>

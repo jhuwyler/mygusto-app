@@ -11,11 +11,8 @@ type Item = {
   text: string;
 };
 
-//const items: Item[] = [{ id: 1, src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 2, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{id: 3,  src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 4, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{id: 5,  src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 6, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'}];
-
 const RecipeList: React.FC = () => {
   const [list, setList] = React.useState<Item[]>([]);
-  const name = <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yRecipes</span></IonTitle>;
 
   const [showToastRemoved, setShowToastRemoved] = useState(false);
   const [showToastAdded, setShowToastAdded] = useState(false);
@@ -49,14 +46,14 @@ const RecipeList: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yRecipes</span></IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
+          <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yRecipes</span></IonTitle>
           </IonToolbar>
         </IonHeader>
       {list.length > 0 &&
