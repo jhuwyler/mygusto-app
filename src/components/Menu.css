@@ -110,4 +110,10 @@ ion-note {
 
 ion-item.selected {
   --color: var(--ion-color-primary);
-} 
+}
+
+.menu-logo {
+  padding: 8px;
+  position: absolute;
+  bottom: 0;
+}

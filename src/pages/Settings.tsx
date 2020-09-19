@@ -2,6 +2,7 @@ import { IonAvatar, IonButtons, IonCheckbox, IonContent, IonHeader, IonItem, Ion
 import React from 'react';
 import './Settings.css';
 
+
 const Settings: React.FC = () => {
 
   const name = 'Einstellungen';

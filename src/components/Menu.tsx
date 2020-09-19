@@ -1,4 +1,5 @@
 import {
+  IonCard,
   IonContent,
   IonIcon,
   IonItem,
@@ -52,6 +53,9 @@ const Menu: React.FC = () => {
         <IonList id="inbox-list">
           <IonListHeader>MyGusto</IonListHeader>
           <IonNote>hack Zurich 2020</IonNote>
+
+
+          {/*<img className="tinder-card-image" src=http://placekitten.com/g/200/300' alt=""/>*/}
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -62,8 +66,9 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
-        </IonList>
 
+        </IonList>
+        <img className="menu-logo" src="assets/img/migusto-logo.jpg" alt=""/>
       </IonContent>
     </IonMenu>
   );
