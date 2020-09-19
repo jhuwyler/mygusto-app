@@ -1,5 +1,4 @@
-import { IonButtons, IonLabel, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonCardContent, IonToast, IonGrid, IonRow, IonCol, IonButton, IonIcon  } from '@ionic/react';
-import { cart, trash } from 'ionicons/icons';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonToast, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
 import React, { useState } from 'react';
 import './GroceryList.css';
 

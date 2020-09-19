@@ -1,21 +1,35 @@
 import { IonIcon, IonImg, IonThumbnail, IonItemOptions, IonItemOption, IonButtons, IonLabel, IonItemSliding, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonCardContent, IonToast  } from '@ionic/react';
 import { cart, trash } from 'ionicons/icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './RecipeList.css';
+import axios from 'axios';
+import { baseURL } from '../config';
 
 type Item = {
   id: number;
   src: string;
   text: string;
 };
-const items: Item[] = [{ id: 1, src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 2, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{id: 3,  src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 4, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{id: 5,  src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 6, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'}];
+
+//const items: Item[] = [{ id: 1, src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 2, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{id: 3,  src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 4, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'},{id: 5,  src: 'http://placekitten.com/g/200/300', text: 'catsoup' },{id: 6, src: 'assets/img/rote-bohnen-suppe-mit-sauerrahm-0-47-20.jpg', text:'Rote-Bohnen-Suppe mit Sauerrahm'}];
 
 const RecipeList: React.FC = () => {
-  const [list, setList] = React.useState(items);
+  const [list, setList] = React.useState<Item[]>([]);
   const name = <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yRecipes</span></IonTitle>;
 
   const [showToastRemoved, setShowToastRemoved] = useState(false);
   const [showToastAdded, setShowToastAdded] = useState(false);
+  async function fetchList() {
+    const result = await axios.get(baseURL + '/recipe/liked');
+    setList(items => result.data.map((item:any) => ({
+      id: item.id,
+      text: item.title,
+      src: item.images['1:1']
+    })));
+  };
+  useEffect(() => {
+    fetchList();
+  }, []);
   function removeItem(id : number){
     const newList = list.filter((item) => item.id !== id);
     setShowToastRemoved(true);
