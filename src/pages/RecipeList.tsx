@@ -12,7 +12,8 @@ const items: Item[] = [{ id: 1, src: 'http://placekitten.com/g/200/300', text: '
 
 const RecipeList: React.FC = () => {
   const [list, setList] = React.useState(items);
-  const name = 'Lieblingsrezepte';
+  const name = <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yRecipes</span></IonTitle>;
+
   const [showToastRemoved, setShowToastRemoved] = useState(false);
   const [showToastAdded, setShowToastAdded] = useState(false);
   function removeItem(id : number){

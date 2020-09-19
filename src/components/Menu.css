@@ -106,6 +106,8 @@ ion-note {
   display: inline-block;
   font-size: 16px;
   color: var(--ion-color-medium-shade);
+  padding: 20px;
+  margin-bottom: 80px;
 }
 
 ion-item.selected {

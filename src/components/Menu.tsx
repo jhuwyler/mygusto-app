@@ -8,7 +8,7 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote,
+  IonNote, IonTitle,
 } from '@ionic/react';
 
 import React from 'react';
@@ -25,19 +25,20 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Home',
+    title: 'Swipe',
     url: '/page/home',
     iosIcon: homeOutline,
     mdIcon: homeSharp
   },
   {
-    title: 'Lieblingsrezepte',
+    title: 'MyRecipes',
     url: '/page/recipeList',
     iosIcon: heartOutline,
     mdIcon: headsetSharp
   },
   {
-    title: 'Einstellungen',
+
+    title: 'Settings',
     url: '/page/settings',
     iosIcon: optionsOutline,
     mdIcon: optionsSharp
@@ -51,8 +52,9 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>MyGusto</IonListHeader>
-          <IonNote>hack Zurich 2020</IonNote>
+
+          <IonListHeader><IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yGusto</span></IonTitle></IonListHeader>
+
 
 
           {/*<img className="tinder-card-image" src=http://placekitten.com/g/200/300' alt=""/>*/}
@@ -67,6 +69,7 @@ const Menu: React.FC = () => {
             );
           })}
 
+        <IonNote>built at HackZurich 2020 with data from Migusto</IonNote>
         </IonList>
         <img className="menu-logo" src="assets/img/migusto-logo.jpg" alt=""/>
       </IonContent>

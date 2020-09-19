@@ -5,8 +5,7 @@ import './TinderPage.css';
 
 const TinderPage: React.FC = () => {
 
-  const name = 'Home';
-
+  const name = <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yTaste</span></IonTitle>;
   return (
     <IonPage>
       <IonHeader>
