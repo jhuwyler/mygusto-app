@@ -2,6 +2,7 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import React from 'react';
 import './Settings.css';
 
+
 const Settings: React.FC = () => {
 
   const name = 'Einstellungen';
