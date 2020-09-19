@@ -10,3 +10,15 @@
 .floatRight{
     float: right;
 }
+.action {
+    position: center;
+    width: 40%;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+}
+.cumulus {
+    position: center;
+    width: 40%;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+}

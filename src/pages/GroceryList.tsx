@@ -29,6 +29,7 @@ function flushList(){
           </IonButtons>
           <IonTitle>{pageName}</IonTitle>
         </IonToolbar>
+
       </IonHeader>
 
       <IonContent fullscreen>
