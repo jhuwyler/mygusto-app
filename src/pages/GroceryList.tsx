@@ -90,7 +90,7 @@ async function fetchList() {
         <IonGrid>
             {list.map((item) => (
                 <IonRow key={item.id} class="rowclass">
-                  <IonCol size="8" className="ion-align-self-start">{item.name} {item.discount && <IonBadge className="discount-badge">{item.discount}</IonBadge>} {item.cumulus && <IonBadge className="cumulus-badge">{item.cumulus}</IonBadge>}
+                  <IonCol size="8" className="ion-align-self-start">{item.name} {item.discount && <IonBadge className="discount-badge">{item.discount}</IonBadge>} {item.cumulus && <img className="cumulus-badge" src="assets/img/migros_cumulus_crop.png" alt=""/>}
                   </IonCol>
                   <IonCol className="ion-align-self-end" class='textRight'>{item.quantity !== '0' && item.quantity}</IonCol>
                 </IonRow>
