@@ -1,6 +1,6 @@
 {
-  "appId": "ch.hackzurich.menumatcher",
-  "appName": "menumatcher",
+  "appId": "ch.hackzurich.mygusto",
+  "appName": "mygusto",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
