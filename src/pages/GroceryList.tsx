@@ -14,17 +14,19 @@ import {
     IonCol,
     IonButton,
     IonList,
-    IonCheckbox, IonLabel, IonItem
+    IonCheckbox, IonLabel, IonItem, IonIcon, IonBadge
 } from '@ionic/react';
 import React, {  useEffect, useState } from 'react';
 import './GroceryList.css';
 import axios from 'axios';
 import { baseURL } from '../config';
+import { trash } from 'ionicons/icons';
 
 type Item = {
   id: number;
   name: string;
-  // on_action: string;
+  discount: string;
+  cumulus: string;
   quantity: string;
 };
 
@@ -40,9 +42,12 @@ async function flushList(){
 }
 async function fetchList() {
     const result = await axios.get(baseURL + '/ingredient');
-    setList(items => result.data.map((item:any) => ({
-        name: item.name,
-      quantity: item.quantity
+    setList(items => result.data.map((item:any, index:number) => ({
+      id: index,
+      name: item.name,
+      discount: Math.random() <= 0.3 ? '20%' : '',
+      cumulus: Math.random() <= 0.3 ? '10x' : '',
+      quantity: item.quantity,
     })));
   };
   useEffect(() => {
@@ -64,7 +69,11 @@ async function fetchList() {
         <IonHeader collapse="condense">
           <IonToolbar>
           <IonTitle size="large"><span style={{color: 'darkorange', fontFamily: 'Arial'}}>M</span><span style={{color: 'black', fontFamily: 'Arial'}}>yShoppingList</span></IonTitle>
-            <IonButton class='floatRight' size='small' shape="round" color="danger" onClick={flushList}>leeren</IonButton>
+            <IonButtons slot="primary">
+              <IonButton class='floatRight' color="danger" onClick={flushList}>
+                <IonIcon slot="icon-only" icon={trash} />
+              </IonButton>
+            </IonButtons>
           </IonToolbar>
         </IonHeader>
         <IonList>
@@ -81,8 +90,9 @@ async function fetchList() {
         <IonGrid>
             {list.map((item) => (
                 <IonRow key={item.id} class="rowclass">
-                  <IonCol className="ion-align-self-start">{item.name}</IonCol>
-                  <IonCol className="ion-align-self-end" class='textRight'>{item.quantity}</IonCol>
+                  <IonCol size="8" className="ion-align-self-start">{item.name} {item.discount && <IonBadge className="discount-badge">{item.discount}</IonBadge>} {item.cumulus && <IonBadge className="cumulus-badge">{item.cumulus}</IonBadge>}
+                  </IonCol>
+                  <IonCol className="ion-align-self-end" class='textRight'>{item.quantity !== '0' && item.quantity}</IonCol>
                 </IonRow>
             ))}
          </IonGrid>}

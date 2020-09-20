@@ -22,3 +22,15 @@
   /*position: absolute;*/
   /*bottom: 0;*/
 }
+
+.discount-badge {
+    background-color: darkorange;
+    border-radius: 0;
+    margin-bottom: -4px;
+}
+
+.cumulus-badge {
+    background-color: #004293;
+    border-radius: 0;
+    margin-bottom: -4px;
+}

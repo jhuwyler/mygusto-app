@@ -74,7 +74,7 @@ const Menu: React.FC = () => {
             );
           })}
 
-        <IonNote>built at HackZurich 2020 with data from Migusto</IonNote>
+        <IonNote>Built at HackZurich 2020 with Data from Migusto</IonNote>
         </IonList>
         <img className="menu-logo" src="assets/img/migusto-logo.jpg" alt=""/>
       </IonContent>

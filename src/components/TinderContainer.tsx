@@ -117,7 +117,7 @@ const TinderContainer: React.FC = () => {
   }
 
   const cardsLeft = cards.filter(v => v.status === 'none').length;
-  console.log(cards);
+
   return (
     <div>
       <div className="tinder-container">
